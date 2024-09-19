@@ -1,0 +1,54 @@
+--- COMANDO GIT
+
+	1. repositorio remoto inicial es la Rama Main(master)
+	2. Crear rama a partir de la Main
+	3. Trabajar localmente en tu rama, guardar cambios (commit)
+	4. publicar tu rama (Push)
+	5. solicitar un (pull request) para que tu rama sea parte de la rama main (merge)
+	6. eliminar tu rama
+
+
+	-- git init : Iniciar repo local 
+	-- git remote add origin [url]: Agrega un repositorio remoto con el nombre "origin", que es comúnmente usado para referirse al repositorio principal.
+	-- git status : Ver estado del directorio
+	-- git add [archivo] : agregar cambios de un archivo en el directorio
+	-- git add . : agregar cambios de todos los archivos en el directorio
+	-- git commit -m "[mensaje]" : confirmar los cambios agregados en en el historial del repositorio
+	-- git push : Envia los cambios confirmados a un repositorio remoto
+	-- git pull : Descarga y fusiona los cambios desde un repositorio remoto
+	-- git branch : Muestra una lista de todas las ramas en repositorio
+	-- git checkout [nombre_rama] : Cambia a la rama especificada.
+	-- git checkout -b : Para crear una nueva rama y cambiarte a ella al mismo tiempo.
+	-- git merge [nombre_rama] : fusiona la rama especificada con la rama actual
+	-- git log : muestra el historial de commits del repositorio
+	-- git reset [opciones] : Deshace cambios en el área de preparación o en el directorio de trabajo. Por ejemplo, git reset --hard elimina todos los cambios no confirmados.
+	-- git tag [nombre_tag]: Crea una etiqueta (tag) en un commit específico, útil para marcar versiones o hitos importantes del proyecto.
+
+
+
+---- COMANDOS PARA PROYECTO GestionCarrera_java
+	
+	-- CREAR REPOSITORIO LOCAL
+		-- git init 
+		-- git remote add origin https://github.com/EdArangoDEV/Proyecto_GestionCarrera_java.git
+		-- git status
+		-- git add .
+		-- git commit -m "Primer commit"
+		-- git log
+		-- git push origin master
+		-- git config list
+
+	-- CREAR NUEVA RAMA dev
+		-- git checkout -b develop
+
+		-- se movieron archivos a carpeta
+		-- git status
+		-- git add .
+		-- git commit -m "Se movieron archivos a carpeta (Codigo)"
+		-- git push origin master
+		
+
+	-- CAMBIO A RAMA master
+		-- git checkout master
+		-- git status
+		

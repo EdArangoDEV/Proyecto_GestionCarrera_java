@@ -53,4 +53,4 @@
 	-- CAMBIO A RAMA master
 		-- git checkout master
 		-- git status
-		
+		-- git merge develop

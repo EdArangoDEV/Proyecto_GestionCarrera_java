@@ -6,40 +6,7 @@ public class Institucion {
 
     public static void main(String[] args) throws IOException, InterruptedException {
 
-        /*
-         * //Empleado emp1 = new Empleado(24001, "Pedro", "Matematica");
-         * //Profesor pr1 = new Profesor(24002, "Luis", "Fisica");
-         * Director dir1 = new Director(24003, "Ricardo", "Logistica");
-         * //System.out.println(emp1);
-         * //System.out.println(pr1);
-         * //System.out.println(dir1);
-         * 
-         * Carrera cr1 = new Carrera(2401,"Tecnico desarollo"
-         * ,"Programa de estudios en Ingeniería de Software",5,dir1);
-         * System.out.println(cr1);
-         * cr1.agregarSemestres();
-         * 
-         * 
-         * Horario h1 = new Horario("Lunes",
-         * "18:30","19,30");
-         * // System.out.println(h1);
-         * 
-         * 
-         * // Curso c1 = new Curso("Mate1",5,h1,dir1);
-         * // Curso c2 = new Curso("Logica",7,h1,dir1);
-         * // Curso c3 = new Curso("Ingles",6,h1,dir1);
-         * // //System.out.println(c1);
-         * // //System.out.println(c2);
-         * 
-         * // s1.agregarCurso(c1);
-         * // s1.agregarCurso(c2);
-         * // s1.agregarCurso(c3);
-         * 
-         * cr1.semestres.get(1).getCursos();
-         * cr1.getSemestres();
-         * //
-         */
-
+        // Creacion de objetos principales
         Director dir1 = new Director(2401, "Ing. Luis Marroquin", "Logistica");
 
         Carrera cr1 = new Carrera(2401, "Tecnico de Desarollo de Software",

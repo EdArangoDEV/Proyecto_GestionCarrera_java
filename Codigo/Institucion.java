@@ -370,53 +370,57 @@ public class Institucion {
                 menuCursos();
                 int opcionPrincipal = leerOpcion();
                 int nCurso;
+                Curso curso;
 
                 switch (opcionPrincipal) {
                     case 1:
                         nCurso = numeroCurso();
+                        curso = semestre.cursos.get(nCurso - 1);
                         limpiarConsola();
                         System.out.println("Nombre actual de curso " + nCurso + ": "
-                                + semestre.cursos.get(nCurso - 1).getNombre() + "\n");
+                                + curso.getNombre() + "\n");
                         System.out.print("Ingrese nuevo nombre del curso: ");
                         String nNombre = scanner.nextLine();
                         limpiarConsola();
-                        semestre.cursos.get(nCurso - 1).setNombre(nNombre);
+                        curso.setNombre(nNombre);
                         break;
                     case 2:
                         int nHoraF = 0;
                         int nHoraI = 0;
                         nCurso = numeroCurso();
+                        curso = semestre.cursos.get(nCurso - 1);
                         limpiarConsola();
-                        Horario horario = semestre.cursos.get(nCurso - 1).getHorario();
-                        System.out.println("Horario actual de curso " + semestre.cursos.get(nCurso - 1).getNombre() + ": "
-                                        + semestre.cursos.get(nCurso - 1).getHora() + "\n");
+                        Horario horario = curso.getHorario();
+                        System.out.println("Horario actual de curso " + curso.getNombre() + ": "
+                                        + curso.getHora() + "\n");
                         nHoraI = ingresarHora("Inicio");
                         limpiarConsola();
                         nHoraF = validarHoraF(nHoraI);
                         limpiarConsola();
                         horario.hora_inicio = nHoraI;
                         horario.hora_fin = nHoraF;
-                        semestre.cursos.get(nCurso - 1).setHorario(horario);
+                        curso.setHorario(horario);
                         break;
                     case 3:
                         nCurso = numeroCurso();
+                        curso = semestre.cursos.get(nCurso - 1);
                         limpiarConsola();
                         System.out.println(
-                                "Profesor actual del curso " + semestre.cursos.get(nCurso - 1).getNombre() + ": "
-                                        + semestre.cursos.get(nCurso - 1).getProfesor() + "\n");
+                                "Profesor actual del curso " + curso.getNombre() + ": "
+                                        + curso.getProfesor() + "\n");
                         Profesor p = agregarProfesor(carrera);
                         limpiarConsola();
-                        semestre.cursos.get(nCurso - 1).prof_asignado.setCodigo(p.codigo);
-                        semestre.cursos.get(nCurso - 1).prof_asignado.setNombre(p.nombre);
-                        semestre.cursos.get(nCurso - 1).prof_asignado.setEspecialidad(p.especialidad);
+                        curso.prof_asignado.setCodigo(p.codigo);
+                        curso.prof_asignado.setNombre(p.nombre);
+                        curso.prof_asignado.setEspecialidad(p.especialidad);
                         break;
                     case 4:
                         agregarCurso(semestre, carrera);
                         break;
                     case 5:
                         nCurso = numeroCurso();
+                        curso = semestre.cursos.get(nCurso - 1);
                         limpiarConsola();
-                        Curso curso = semestre.cursos.get(nCurso - 1);
                         // System.out.println(curso);
                         semestre.eliminarCurso(curso);
                         break;

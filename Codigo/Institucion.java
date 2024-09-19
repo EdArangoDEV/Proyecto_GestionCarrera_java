@@ -277,11 +277,41 @@ public class Institucion {
         return nHoraF;
     }
 
+
+    private static Profesor agregarProfesor(Carrera carrera) throws IOException, InterruptedException {
+        String nNombreP = "";
+        String nEspecialidadP = "";
+
+        System.out.print("Ingrese el codigo del profesor: ");
+        Integer codP = Integer.parseInt(scanner.nextLine());
+        limpiarConsola();
+        Profesor profEncontrado = carrera.getProfesores(codP);
+        Profesor p;
+        limpiarConsola();
+        if (profEncontrado != null) {
+            System.out.print("Se encontro profesor con codigo: " + profEncontrado.codigo + " y nombre: "
+                    + profEncontrado.nombre + "\n");
+            p = profEncontrado;
+            return p;
+        } else {
+            System.out.println("No se encontro profesor con codigo: " + codP);
+            System.out.print("Ingrese el nombre: ");
+            nNombreP = scanner.nextLine();
+            limpiarConsola();
+            System.out.println("Profesor ingresado con codigo: " + codP + ", nombre: " + nNombreP);
+            System.out.print("Ingrese la especialidad: ");
+            nEspecialidadP = scanner.nextLine();
+            limpiarConsola();
+            System.out.println("Profesor ingresado con codigo: " + codP + ", nombre: " + nNombreP
+                    + " y especialidad: " + nEspecialidadP);
+            p = new Profesor(codP, nNombreP, nEspecialidadP);
+            return p;
+        }
+    }
+
     private static void agregarCurso(Semestre semestre, Carrera carrera) throws IOException, InterruptedException {
         int nHoraF = 0;
         int nHoraI = 0;
-        String nNombreP = "";
-        String nEspecialidadP = "";
 
         limpiarConsola();
         System.out.print("Ingrese el nombre del curso: ");
@@ -306,34 +336,12 @@ public class Institucion {
         System.out.println(
                 "Nombre de curso ingresado: " + nNombreC + ", Creditos del curso ingresado: " + nCreditos
                         + ", dia ingresado: " + nDia + " con horario de " + nHoraI + " a " + nHoraF + "\n");
-
-        System.out.print("Ingrese el codigo del profesor: ");
-        Integer codP = Integer.parseInt(scanner.nextLine());
-        limpiarConsola();
-        Profesor profEncontrado = carrera.getProfesores(codP);
-        Profesor p;
-        limpiarConsola();
-        if (profEncontrado != null) {
-            System.out.print("Se encontro profesor con codigo: " + profEncontrado.codigo + " y nombre: "
-                    + profEncontrado.nombre + "\n");
-            p = profEncontrado;
-        } else {
-            System.out.println("No se encontro profesor con codigo: " + codP);
-            System.out.print("Ingrese el nombre: ");
-            nNombreP = scanner.nextLine();
-            limpiarConsola();
-            System.out.println("Profesor ingresado con codigo: " + codP + ", nombre: " + nNombreP);
-            System.out.print("Ingrese la especialidad: ");
-            nEspecialidadP = scanner.nextLine();
-            limpiarConsola();
-            System.out.println("Profesor ingresado con codigo: " + codP + ", nombre: " + nNombreP
-                    + " y especialidad: " + nEspecialidadP);
-            p = new Profesor(codP, nNombreP, nEspecialidadP);
-        }
+        Profesor resP = agregarProfesor(carrera);
         Horario h = new Horario(nDia, nHoraI, nHoraF);
-        Curso c = new Curso(nNombreC, nCreditos, h, p);
+        Curso c = new Curso(nNombreC, nCreditos, h, resP);
         semestre.agregarCurso(c);
     }
+
 
     private static void editarCursos(Semestre semestre, Carrera carrera) throws IOException, InterruptedException {
 
@@ -396,10 +404,11 @@ public class Institucion {
                         System.out.println(
                                 "Profesor actual del curso " + semestre.cursos.get(nCurso - 1).getNombre() + ": "
                                         + semestre.cursos.get(nCurso - 1).getProfesor() + "\n");
-                        System.out.print("Ingrese nuevo Profesor del curso: ");
-                        String nProf = scanner.nextLine();
+                        Profesor p = agregarProfesor(carrera);
                         limpiarConsola();
-                        semestre.cursos.get(nCurso - 1).prof_asignado.setNombre(nProf);
+                        semestre.cursos.get(nCurso - 1).prof_asignado.setCodigo(p.codigo);
+                        semestre.cursos.get(nCurso - 1).prof_asignado.setNombre(p.nombre);
+                        semestre.cursos.get(nCurso - 1).prof_asignado.setEspecialidad(p.especialidad);
                         break;
                     case 4:
                         agregarCurso(semestre, carrera);

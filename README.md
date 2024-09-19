@@ -11,6 +11,6 @@
 
 
 ### Datos del autor 
-Nombre: Edwar Arango
-Correo: edwar.arango@galileo.edu
-Carnet: 24000841
+	Nombre: Edwar Arango
+	Correo: edwar.arango@galileo.edu
+	Carnet: 24000841

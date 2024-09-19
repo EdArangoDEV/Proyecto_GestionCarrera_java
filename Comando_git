@@ -47,6 +47,8 @@
 		-- git commit -m "Se movieron archivos a carpeta (Codigo)"
 		-- git push origin master
 		
+	-- PUBLICAR RAMA develop A REMOTO
+		-- git push origin develop
 
 	-- CAMBIO A RAMA master
 		-- git checkout master

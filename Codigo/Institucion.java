@@ -41,7 +41,7 @@ public class Institucion {
                     break;
                 case 2:
                     ;
-                    editarDatosDirector(cr1.director);
+                    editarDirector(cr1, cr1.director);
                     break;
                 case 3:
                     editarSemestres(cr1);
@@ -66,7 +66,7 @@ public class Institucion {
     private static void mostrarMenuPrincipal() {
         System.out.println("\nMenú principal:");
         System.out.println("1. Editar datos carrera");
-        System.out.println("2. Editar director carrera");
+        System.out.println("2. Director carrera");
         System.out.println("3. Ver semestres carrera");
         System.out.println("4. Salir");
     }
@@ -82,6 +82,13 @@ public class Institucion {
     private static void menuDirectorCarrera() {
 
         System.out.println("Opciones Director Carrera:\n");
+        System.out.println("1. Cambiar de director");
+        System.out.println("2. regresar");
+    }
+
+    private static void menuDatosDirectorCarrera() {
+
+        System.out.println("Opciones Director actual:\n");
         System.out.println("1. Editar Nombre");
         System.out.println("2. Editar Especialidad");
         System.out.println("3. regresar");
@@ -108,6 +115,7 @@ public class Institucion {
     private static void editarDatosCarrera(Carrera carrera) throws IOException, InterruptedException {
 
         do {
+            System.out.println("Datos actuales de la carrera: " + carrera.getNombre() + ", descripcion: " + carrera.getDescripcion() + ".\n");
             menuDatosCarrera();
             int opcionPrincipal = leerOpcion();
 
@@ -134,10 +142,39 @@ public class Institucion {
 
     }
 
-    private static void editarDatosDirector(Director director) throws IOException, InterruptedException {
+    private static void editarDirector(Carrera carrera, Director director) throws IOException, InterruptedException {
 
         do {
+            System.out.println("Director actual de la carrera: " + director.getNombre() + "\n");
             menuDirectorCarrera();
+            int opcionPrincipal = leerOpcion();
+
+            switch (opcionPrincipal) {
+                case 1:
+                    Empleado emp = agregarDirector(carrera);
+                    // conversion de clase padre a clase hija
+                    Director dir = (Director) emp;
+                    carrera.setDirector(dir);
+                    director = dir;
+                    break;
+                case 2:
+                    System.out.println("\nRegresando a Menu principal...");
+                    return;
+                default:
+                    System.out.println("\nOpción inválida. Intente de nuevo.");
+                    break;
+            }
+
+        } while (true);
+
+    }
+
+    private static void editarDatosDirector(Director director) throws IOException, InterruptedException {
+        do {
+            System.out.println("Datos actuales del director:");
+            System.out.println("\tNombre: " + director.getNombre());
+            System.out.println("\tEspecialidad: " + director.getEspecialidad() + "\n");
+            menuDatosDirectorCarrera();
             int opcionPrincipal = leerOpcion();
 
             switch (opcionPrincipal) {
@@ -160,7 +197,6 @@ public class Institucion {
             }
 
         } while (true);
-
     }
 
     private static void editarSemestres(Carrera carrera) throws IOException, InterruptedException {
@@ -233,6 +269,37 @@ public class Institucion {
         } while (op != 1);
         op = 0;
         return nHoraF;
+    }
+
+    private static Empleado agregarDirector(Carrera carrera) throws IOException, InterruptedException {
+        String nNombreP = "";
+        String nEspecialidadP = "";
+
+        System.out.print("Ingrese el codigo de empleado: ");
+        Integer codP = Integer.parseInt(scanner.nextLine());
+        limpiarConsola();
+        Profesor profEncontrado = carrera.getProfesores(codP);
+        Empleado emp;
+        limpiarConsola();
+        if (profEncontrado != null) {
+            System.out.print("Se encontro empleado con codigo: " + profEncontrado.codigo + " y nombre: "
+                    + profEncontrado.nombre + "\n");
+            emp = new Director(profEncontrado.codigo, profEncontrado.nombre, profEncontrado.especialidad);
+            return emp;
+        } else {
+            System.out.println("No se encontro Empleado con codigo: " + codP);
+            System.out.print("Ingrese el nombre: ");
+            nNombreP = scanner.nextLine();
+            limpiarConsola();
+            System.out.println("Empleado ingresado con codigo: " + codP + ", nombre: " + nNombreP);
+            System.out.print("Ingrese la especialidad: ");
+            nEspecialidadP = scanner.nextLine();
+            limpiarConsola();
+            System.out.println("Empleado ingresado con codigo: " + codP + ", nombre: " + nNombreP
+                    + " y especialidad: " + nEspecialidadP + "\n");
+            emp = new Director(codP, nNombreP, nEspecialidadP);
+            return emp;
+        }
     }
 
     private static Profesor agregarProfesor(Carrera carrera) throws IOException, InterruptedException {

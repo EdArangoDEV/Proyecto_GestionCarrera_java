@@ -76,8 +76,7 @@ public class Institucion {
         System.out.println("Opciones datos Carrera:\n");
         System.out.println("1. Editar Nombre");
         System.out.println("2. Editar Descripcion");
-        System.out.println("3. Editar Director");
-        System.out.println("4. regresar");
+        System.out.println("3. regresar");
     }
 
     private static void menuDirectorCarrera() {
@@ -124,13 +123,6 @@ public class Institucion {
                     carrera.setDescripcion(nDescripcion);
                     break;
                 case 3:
-                    Director dir = carrera.getDirectorCarrera();
-                    System.out.print("Ingrese nuevo nombre del director: ");
-                    String Ndirector = scanner.nextLine();
-                    dir.setNombre(Ndirector);
-                    // editarCursosCarrera();
-                    break;
-                case 4:
                     System.out.println("\nRegresando a Menu principal...");
                     return;
                 default:
@@ -205,7 +197,6 @@ public class Institucion {
         return nCurso;
     }
 
-
     private static int ingresarHora(String m) throws IOException, InterruptedException {
         int hora = 0;
         int op = 0;
@@ -243,7 +234,6 @@ public class Institucion {
         op = 0;
         return nHoraF;
     }
-
 
     private static Profesor agregarProfesor(Carrera carrera) throws IOException, InterruptedException {
         String nNombreP = "";
@@ -309,7 +299,6 @@ public class Institucion {
         semestre.agregarCurso(c);
     }
 
-
     private static void editarCursos(Semestre semestre, Carrera carrera) throws IOException, InterruptedException {
 
         do {
@@ -359,7 +348,7 @@ public class Institucion {
                         limpiarConsola();
                         Horario horario = curso.getHorario();
                         System.out.println("Horario actual de curso " + curso.getNombre() + ": "
-                                        + curso.getHora() + "\n");
+                                + curso.getHora() + "\n");
                         nHoraI = ingresarHora("Inicio");
                         limpiarConsola();
                         nHoraF = validarHoraF(nHoraI);

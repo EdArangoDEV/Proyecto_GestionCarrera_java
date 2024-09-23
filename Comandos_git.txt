@@ -23,7 +23,7 @@
 	-- git log : muestra el historial de commits del repositorio
 	-- git reset [opciones] : Deshace cambios en el área de preparación o en el directorio de trabajo. Por ejemplo, git reset --hard elimina todos los cambios no confirmados.
 	-- git tag [nombre_tag]: Crea una etiqueta (tag) en un commit específico, útil para marcar versiones o hitos importantes del proyecto.
-
+	-- git remote rm origin : Este comando eliminará la asociación del repositorio local con el remoto llamado "origin".
 
 
 ---- COMANDOS PARA PROYECTO GestionCarrera_java

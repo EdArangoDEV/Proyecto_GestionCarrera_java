@@ -53,6 +53,7 @@ public class Semestre {
         } else {
             // System.out.println("El semestre numero: " + this.numero + ", tiene los
             // siguientes cursos:");
+            // Metodo forEach para recorrer y aplicar accion en elementos de una lista
             int[] i = { 1 };
             this.cursos.forEach(curso -> {
                 System.out.println("\t" + i[0] + ". curso: " + curso.getNombre() + " con " + curso.getHorario() + " y Profesor: " + curso.getProfesor() + ".");

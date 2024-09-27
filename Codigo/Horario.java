@@ -46,6 +46,7 @@ public class Horario{
             boolean encontrado = false;
             String d = "";
 
+            // bucle forEach para recorrer elementos de una lista
             for (String dia : DiaSemana.dias)
             {
                 if(dia.toUpperCase().equals(nuevoDia.toUpperCase()))

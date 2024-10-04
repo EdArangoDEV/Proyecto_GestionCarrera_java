@@ -102,8 +102,12 @@ public class Carrera {
             p = semestre.busquedaProfesor(cod);
 
             if (p != null) {
-                if (semestre.busquedaProfesor(cod).codigo.equals(cod)) {
-                    p = semestre.busquedaProfesor(cod);
+                // if (semestre.busquedaProfesor(cod).codigo.equals(cod)) {
+                //     p = semestre.busquedaProfesor(cod);
+                //     //System.out.println(p);
+                //     return p;
+                // }
+                if (p.codigo.equals(cod)) {
                     //System.out.println(p);
                     return p;
                 }

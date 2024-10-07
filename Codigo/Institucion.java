@@ -282,9 +282,12 @@ public class Institucion {
         Empleado emp;
         limpiarConsola();
         if (profEncontrado != null) {
-            System.out.print("Se encontro empleado con codigo: " + profEncontrado.codigo + " y nombre: "
-                    + profEncontrado.nombre + "\n");
-            emp = new Director(profEncontrado.codigo, profEncontrado.nombre, profEncontrado.especialidad);
+            int codEmp = profEncontrado.getCodigo();
+            String nomEmp = profEncontrado.getNombre();
+            String espEmp = profEncontrado.getEspecialidad();
+            System.out.print("Se encontro empleado con codigo: " + codEmp + " y nombre: "
+                    + espEmp + "\n");
+            emp = new Director(codEmp, nomEmp, espEmp);
             return emp;
         } else {
             System.out.println("No se encontro Empleado con codigo: " + codP);
